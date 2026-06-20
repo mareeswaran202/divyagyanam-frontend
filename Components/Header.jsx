@@ -3,36 +3,45 @@
 import Link from "next/link";
 import { useState } from "react";
 
-export default function Header() {
+export default function Header({logoimg}) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
+    <header className="bg-primary-brown shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between px-4 py-4">
 
           <Link
             href="/"
-            className="text-2xl font-bold text-orange-600"
+            className="text-2xl font-bold text-white"
           >
-            DivyaGyanam
+             <img src={logoimg} alt="" className="sitelogo" />
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
-            <Link href="/" className="hover:text-orange-600">
-              Home
+            <Link href="/" className="text-white">
+             Temples
             </Link>
-            <Link href="#" className="hover:text-orange-600">
-              About Us
+            <Link href="#" className="text-white">
+              Festivals
             </Link>
-            <Link href="#" className="hover:text-orange-600">
-              Events
+            <Link href="#" className="text-white">
+              Puja Schedule
             </Link>
-            <Link href="#" className="hover:text-orange-600">
-              Blog
+            <Link href="#" className="text-white">
+              Live Darshan
             </Link>
-            <Link href="#" className="hover:text-orange-600">
-              Contact Us
+            <Link href="#" className="text-white">
+             Library
+            </Link>
+             <Link href="#" className="text-white">
+             Media
+            </Link>
+            <Link href="#" className="text-white">
+            Plan Visit
+            </Link>
+            <Link href="#" className="text-white">
+            More
             </Link>
           </nav>
 

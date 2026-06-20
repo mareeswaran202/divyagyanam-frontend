@@ -17,11 +17,7 @@ export default function Slider({ slides }) {
         delay: 3000,
       }}
       pagination={{ clickable: true }}
-       style={{
-    width: "100%",
-    height: "100vh",
-    
-  }}
+        
     >
       {slides.map((slide) => {
         // Build image URL for each slide
@@ -58,22 +54,18 @@ export default function Slider({ slides }) {
                   padding: "120px 80px",
                 }}
               >
-                <h5>{slide.SmallHeading}</h5>
+                <h5 className="text-5xl font-bold text-white">{slide.SmallHeading}</h5>
 
-                <h1
-                  style={{
-                    fontSize: "70px",
-                    fontWeight: "bold",
-                    margin: "20px 0",
-                  }}
+                <h1 className="font-bold  text-primary-gold py-2" style={{fontSize:'60px'}}
+                   
                 >
                   {slide.Mainheading}
                 </h1>
 
                 <p
                   style={{
-                    fontSize: "22px",
-                    lineHeight: "1.8",
+                    fontSize: "20px",
+                    lineHeight: "1.5",
                   }}
                 >
                   {slide.Paragraph}

@@ -2,91 +2,145 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white mt-16">
-      <div className="container mx-auto px-4 py-12">
+   <footer className="bg-black border-t border-[#D4AF37] text-white">
+  <div className="container mx-auto px-6 py-8">
 
-        <div className="grid md:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-8">
+
+      {/* Company Info */}
+      <div className="lg:col-span-2">
+        <div className="flex items-center gap-3">
+          <img
+            src="/images/dlogo.png"
+            alt="DivyaGyanam"
+            className="w-20 h-20"
+          />
 
           <div>
-            <h3 className="text-2xl font-bold mb-4">
+            <h3 className="text-3xl text-[#D4AF37] font-serif">
               DivyaGyanam
             </h3>
 
-            <p className="text-gray-300 leading-relaxed">
-              DivyaGyanam is a spiritual platform dedicated to
-              sharing temple information, devotional content,
-              live darshan updates, and sacred traditions from
-              across India.
+            <p className="text-sm text-gray-300">
+              Discover. Connect. Be Blessed.
             </p>
           </div>
-
-          <div>
-            <h3 className="text-xl font-semibold mb-4">
-              Quick Links
-            </h3>
-
-            <ul className="space-y-2">
-              <li>
-                <Link href="/" className="hover:text-orange-400">
-                  Home
-                </Link>
-              </li>
-
-              <li>
-                <Link href="#" className="hover:text-orange-400">
-                  About Us
-                </Link>
-              </li>
-
-              <li>
-                <Link href="#" className="hover:text-orange-400">
-                  Events
-                </Link>
-              </li>
-
-              <li>
-                <Link href="#" className="hover:text-orange-400">
-                  Blog
-                </Link>
-              </li>
-
-              <li>
-                <Link href="#" className="hover:text-orange-400">
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-semibold mb-4">
-              Contact Us
-            </h3>
-
-            <p className="text-gray-300">
-              DivyaGyanam Spiritual Centre
-            </p>
-
-            <p className="text-gray-300">
-              Chennai, Tamil Nadu, India
-            </p>
-
-            <p className="text-gray-300 mt-2">
-              Email: info@divyagyanam.com
-            </p>
-
-            <p className="text-gray-300">
-              Phone: +91 98765 43210
-            </p>
-          </div>
-
         </div>
 
-        <div className="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
-          © {new Date().getFullYear()} DivyaGyanam. All Rights Reserved.
-        </div>
+        <p className="mt-4 text-sm text-gray-300 leading-6">
+          A complete digital platform for temples,
+          devotees and travelers across South India and beyond.
+        </p>
 
+        <div className="flex gap-4 mt-6">
+          <a href="#"><img src="/images/facebook.png" className="w-8" /></a>
+          <a href="#"><img src="/images/instagram.png" className="w-8" /></a>
+          <a href="#"><img src="/images/youtube.png" className="w-8" /></a>
+          <a href="#"><img src="/images/telegram.png" className="w-8" /></a>
+          <a href="#"><img src="/images/whatsapp.png" className="w-8" /></a>
+        </div>
       </div>
-    </footer>
+
+      {/* Quick Links */}
+      <div>
+        <h4 className="text-[#D4AF37] uppercase font-semibold mb-4">
+          Quick Links
+        </h4>
+
+        <ul className="space-y-2 text-sm text-gray-300">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Refund Policy</a></li>
+        </ul>
+      </div>
+
+      {/* Popular Links */}
+      <div>
+        <h4 className="text-[#D4AF37] uppercase font-semibold mb-4">
+          Popular Links
+        </h4>
+
+        <ul className="space-y-2 text-sm text-gray-300">
+          <li><a href="#">Temples</a></li>
+          <li><a href="#">Festivals</a></li>
+          <li><a href="#">Puja Schedule</a></li>
+          <li><a href="#">Live Darshan</a></li>
+          <li><a href="#">Digital Library</a></li>
+          <li><a href="#">Plan Your Visit</a></li>
+        </ul>
+      </div>
+
+      {/* Support */}
+      <div>
+        <h4 className="text-[#D4AF37] uppercase font-semibold mb-4">
+          Support
+        </h4>
+
+        <ul className="space-y-2 text-sm text-gray-300">
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Suggest a Temple</a></li>
+          <li><a href="#">Report an Issue</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press & Media</a></li>
+        </ul>
+      </div>
+
+      {/* App Download */}
+      <div>
+        <h4 className="text-[#D4AF37] uppercase font-semibold mb-4">
+          Download Our App
+        </h4>
+
+        <div className="space-y-3">
+          <img
+            src="/images/googleplay.png"
+            alt="Google Play"
+            className="w-full max-w-[160px]"
+          />
+
+          <img
+            src="/images/apple.svg"
+            alt="App Store"
+            className="w-full max-w-[160px]"
+          />
+        </div>
+      </div>
+
+      {/* Newsletter */}
+      <div>
+        <h4 className="text-[#D4AF37] uppercase font-semibold mb-4">
+          Newsletter
+        </h4>
+
+        <p className="text-sm text-gray-300 mb-4">
+          Subscribe for updates on festivals,
+          live darshan and other news.
+        </p>
+
+        <input
+          type="email"
+          placeholder="Enter your email"
+          className="w-full px-3 py-2 rounded bg-white text-black text-sm"
+        />
+
+        <button
+          className="w-full mt-3 bg-[#D4AF37] text-black font-medium py-2 rounded"
+        >
+          Subscribe
+        </button>
+      </div>
+
+    </div>
+
+    {/* Bottom Copyright */}
+    <div className="border-t border-[#D4AF37] mt-8 pt-4 text-center text-sm text-gray-300">
+      © 2026 DivyaGyanam.com | All Rights Reserved
+    </div>
+
+  </div>
+</footer>
   );
 }
