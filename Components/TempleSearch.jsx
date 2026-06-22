@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation";
+import { fetchAPI } from "@/lib/api";
 
 function TempleSearch() {
     const router = useRouter();
@@ -53,37 +54,37 @@ const [searchResults, setSearchResults] = useState([]);
   setSuggestions(results.slice(0, 5));
 
 }, [searchText, allTemples, showSuggestions]);
-    const loadTempleData = async () => {
-        try {
-            const res = await fetch(
-                "http://localhost:1337/api/templecollections?pagination[pageSize]=1000"
-            );
+   const loadTempleData = async () => {
+  try {
+    const data = await fetchAPI(
+      "/templecollections?pagination[pageSize]=1000"
+    );
 
-            const data = await res.json();
+    const temples = data.data;
 
-            const temples = data.data;
-            setAllTemples(temples);
+    setAllTemples(temples);
 
-            const uniqueStates = [
-                ...new Set(temples.map(item => item.State))
-            ];
+    const uniqueStates = [
+      ...new Set(temples.map(item => item.State))
+    ];
 
-            const uniqueDistricts = [
-                ...new Set(temples.map(item => item.District))
-            ];
+    const uniqueDistricts = [
+      ...new Set(temples.map(item => item.District))
+    ];
 
-            const uniqueDeities = [
-                ...new Set(temples.map(item => item.Deity))
-            ];
+    const uniqueDeities = [
+      ...new Set(temples.map(item => item.Deity))
+    ];
 
-            setStates(uniqueStates);
-            setDistricts(uniqueDistricts);
-            setDeities(uniqueDeities);
+    setStates(uniqueStates);
+    setDistricts(uniqueDistricts);
+    setDeities(uniqueDeities);
 
-        } catch (error) {
-            console.log(error);
-        }
-    };
+  } catch (error) {
+    console.log("Temple API Error:", error);
+  }
+};
+     
  const handleSearch = () => {
 
   const params = new URLSearchParams();
@@ -162,7 +163,7 @@ const [searchResults, setSearchResults] = useState([]);
                                 Select State
                             </option>
                             {
-                                states.map((state) => <option className="text-black" key={state.state} value={state.State}>{state}</option>)
+                                states.map((state) => <option className="text-black" key={state} value={state}>{state}</option>)
                             }
                         </select>
 
@@ -172,7 +173,7 @@ const [searchResults, setSearchResults] = useState([]);
                                 Select Deity
                             </option>
                             {
-                                deities.map((deitie) => <option className="text-black" key={deitie.deities}>{deitie}</option>)
+                                deities.map((deitie) => <option className="text-black" key={deitie}>{deitie}</option>)
                             }
                         </select>
 
@@ -181,7 +182,7 @@ const [searchResults, setSearchResults] = useState([]);
                             <option value="" className="text-black">
                                 Select District
                             </option>
-                            {districts.map((dist) => <option className="text-black" key={dist.District}>{dist}</option>)}
+                            {districts.map((dist) => <option className="text-black" key={dist}>{dist}</option>)}
                         </select>
                         <div>
                             <button
