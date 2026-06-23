@@ -48,49 +48,49 @@ export default function Footer() {
         </h4>
 
         <ul className="space-y-2 text-sm text-gray-300">
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms & Conditions</a></li>
-          <li><a href="#">Refund Policy</a></li>
+          <li><a href="/coming-soon">About Us</a></li>
+          <li><a href="/coming-soon">Contact Us</a></li>
+          <li><a href="/coming-soon">FAQ</a></li>
+          <li><a href="/coming-soon">Privacy Policy</a></li>
+          <li><a href="/coming-soon">Terms & Conditions</a></li>
+          <li><a href="/coming-soon">Refund Policy</a></li>
         </ul>
       </div>
 
       {/* Popular Links */}
       <div>
-        <h4 className="text-[#D4AF37] uppercase font-semibold mb-4">
+        <h4 className="text-[/coming-soonD4AF37] uppercase font-semibold mb-4">
           Popular Links
         </h4>
 
         <ul className="space-y-2 text-sm text-gray-300">
-          <li><a href="#">Temples</a></li>
-          <li><a href="#">Festivals</a></li>
-          <li><a href="#">Puja Schedule</a></li>
-          <li><a href="#">Live Darshan</a></li>
-          <li><a href="#">Digital Library</a></li>
-          <li><a href="#">Plan Your Visit</a></li>
+          <li><a href="/coming-soon">Temples</a></li>
+          <li><a href="/coming-soon">Festivals</a></li>
+          <li><a href="/coming-soon">Puja Schedule</a></li>
+          <li><a href="/coming-soon">Live Darshan</a></li>
+          <li><a href="/coming-soon">Digital Library</a></li>
+          <li><a href="/coming-soon">Plan Your Visit</a></li>
         </ul>
       </div>
 
       {/* Support */}
       <div>
-        <h4 className="text-[#D4AF37] uppercase font-semibold mb-4">
+        <h4 className="text-[/coming-soonD4AF37] uppercase font-semibold mb-4">
           Support
         </h4>
 
         <ul className="space-y-2 text-sm text-gray-300">
-          <li><a href="#">Help Center</a></li>
-          <li><a href="#">Suggest a Temple</a></li>
-          <li><a href="#">Report an Issue</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Press & Media</a></li>
+          <li><a href="/coming-soon">Help Center</a></li>
+          <li><a href="/coming-soon">Suggest a Temple</a></li>
+          <li><a href="/coming-soon">Report an Issue</a></li>
+          <li><a href="/coming-soon">Careers</a></li>
+          <li><a href="/coming-soon">Press & Media</a></li>
         </ul>
       </div>
 
       {/* App Download */}
       <div>
-        <h4 className="text-[#D4AF37] uppercase font-semibold mb-4">
+        <h4 className="text-[/coming-soonD4AF37] uppercase font-semibold mb-4">
           Download Our App
         </h4>
 

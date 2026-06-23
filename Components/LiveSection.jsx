@@ -50,7 +50,7 @@ export default function LiveSection(){
           Upcoming Live
         </h3>
 
-        <a href="#" className="text-primary-gold text-sm">
+        <a href="/coming-soon" className="text-primary-gold text-sm">
           View All →
         </a>
       </div>
@@ -83,7 +83,7 @@ export default function LiveSection(){
       ))}
 
       <a
-        href="#"
+        href="/coming-soon"
         className="text-primary-gold text-sm block mt-4"
       >
         View All Live Streams →
@@ -97,7 +97,7 @@ export default function LiveSection(){
           Today's Festivals
         </h3>
 
-        <a href="#" className="text-primary-gold text-sm">
+        <a href="/coming-soon" className="text-primary-gold text-sm">
           View Calendar →
         </a>
       </div>
@@ -130,7 +130,7 @@ export default function LiveSection(){
       ))}
 
       <a
-        href="#"
+        href="/coming-soon"
         className="text-primary-gold text-sm block mt-4"
       >
         View Festival Calendar →
@@ -144,7 +144,7 @@ export default function LiveSection(){
           Puja Schedule
         </h3>
 
-        <a href="#" className="text-primary-gold text-sm">
+        <a href="/coming-soon" className="text-primary-gold text-sm">
           View All →
         </a>
       </div>
@@ -171,7 +171,7 @@ export default function LiveSection(){
       ))}
 
       <a
-        href="#"
+        href="/coming-soon"
         className="text-primary-gold text-sm block mt-4"
       >
         View Full Schedule →

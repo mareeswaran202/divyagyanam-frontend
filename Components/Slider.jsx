@@ -50,7 +50,7 @@ export default function Slider({ slides }) {
                   position: "relative",
                   zIndex: 10,
                   color: "white",
-                  maxWidth: "700px",
+                  maxWidth: "900px",
                   padding: "120px 80px",
                 }}
               >
@@ -66,10 +66,41 @@ export default function Slider({ slides }) {
                   style={{
                     fontSize: "20px",
                     lineHeight: "1.5",
+                    maxWidth:"700px",
                   }}
                 >
                   {slide.Paragraph}
                 </p>
+                <div className="flex flex-wrap gap-4 mt-8">
+
+  <a
+    href="/temples"
+    className="bg-gradient-to-r from-[#d4af37] to-[#b8860b]
+    text-black font-semibold px-8 py-4 rounded-lg
+    flex items-center gap-3 hover:scale-105 transition-all"
+  >
+      Explore Temples
+  </a>
+
+  <a
+    href="/live-darshan"
+    className="bg-[#1a0f07] border border-[#d4af37]
+    text-white font-semibold px-8 py-4 rounded-lg
+    flex items-center gap-3 hover:bg-[#2a180d] transition-all"
+  >
+     Watch Live Darshan
+  </a>
+
+  <a
+    href="/donate"
+    className="bg-gradient-to-r from-[#451507] to-[#451507]
+    text-white font-semibold px-8 py-4 rounded-lg
+    flex items-center gap-3 hover:scale-105 transition-all"
+  >
+      Donate Now
+  </a>
+
+</div>
               </div>
             </div>
           </SwiperSlide>

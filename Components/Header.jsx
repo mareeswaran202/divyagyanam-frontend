@@ -19,28 +19,28 @@ export default function Header({logoimg}) {
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-white">
+            <Link href="/temple-collection" className="text-white">
              Temples
             </Link>
-            <Link href="#" className="text-white">
+            <Link href="/coming-soon" className="text-white">
               Festivals
             </Link>
-            <Link href="#" className="text-white">
+            <Link href="/coming-soon" className="text-white">
               Puja Schedule
             </Link>
-            <Link href="#" className="text-white">
+            <Link href="/coming-soon" className="text-white">
               Live Darshan
             </Link>
-            <Link href="#" className="text-white">
+            <Link href="/coming-soon" className="text-white">
              Library
             </Link>
-             <Link href="#" className="text-white">
+             <Link href="/coming-soon" className="text-white">
              Media
             </Link>
-            <Link href="#" className="text-white">
+            <Link href="/coming-soon" className="text-white">
             Plan Visit
             </Link>
-            <Link href="#" className="text-white">
+            <Link href="/coming-soon" className="text-white">
             More
             </Link>
           </nav>
@@ -56,11 +56,30 @@ export default function Header({logoimg}) {
         {menuOpen && (
           <div className="md:hidden py-4 border-t">
             <div className="flex flex-col gap-4">
-              <Link href="/">Home</Link>
-              <Link href="#">About Us</Link>
-              <Link href="#">Events</Link>
-              <Link href="#">Blog</Link>
-              <Link href="#">Contact Us</Link>
+              <Link href="/temple-collection" className="text-white">
+             Temples
+            </Link>
+            <Link href="/coming-soon" className="text-white">
+              Festivals
+            </Link>
+            <Link href="/coming-soon" className="text-white">
+              Puja Schedule
+            </Link>
+            <Link href="/coming-soon" className="text-white">
+              Live Darshan
+            </Link>
+            <Link href="/coming-soon" className="text-white">
+             Library
+            </Link>
+             <Link href="/coming-soon" className="text-white">
+             Media
+            </Link>
+            <Link href="/coming-soon" className="text-white">
+            Plan Visit
+            </Link>
+            <Link href="/coming-soon" className="text-white">
+            More
+            </Link>
             </div>
           </div>
         )}
