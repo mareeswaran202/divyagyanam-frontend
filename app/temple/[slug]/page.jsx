@@ -1,6 +1,7 @@
 import { fetchAPI } from "@/lib/api";
 import { notFound } from "next/navigation";
 import TempleGallery from "@/Components/TempleGallery";
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 export default async function TempleDetails({ params }) {
   const { slug } = await params;
 
@@ -28,14 +29,18 @@ export default async function TempleDetails({ params }) {
       />
 
       {/* Temple Name */}
-      <h1 className="text-5xl font-bold mt-8">
+      <h1 className="text-4xl font-bold mt-8">
         {temple.TempleName}
       </h1>
 
       {/* Description */}
-      <p className="mt-6 text-lg leading-8 text-gray-700">
+        {/* <p className="mt-6 text-lg leading-8 text-gray-700">
         {temple.Description}
-      </p>
+      </p> */}
+      
+      <div className="mt-6 prose prose-lg max-w-none prose-p:text-[17px]">
+       <BlocksRenderer content={temple.DescriptionRich}/>
+      </div>
      <section className="mt-16">
        <h2 className="text-3xl font-bold mb-8">
     Temple Gallery
