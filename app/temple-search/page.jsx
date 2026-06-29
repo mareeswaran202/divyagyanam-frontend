@@ -11,10 +11,7 @@ export default async function TempleSearchPage({
   const district = params?.district || "";
   const deity = params?.deity || "";
 
-  console.log("search =", search);
-  console.log("state =", state);
-  console.log("district =", district);
-  console.log("deity =", deity);
+
 
   const data = await fetchAPI(
     "/templecollections?populate=*"
@@ -49,7 +46,7 @@ export default async function TempleSearchPage({
     );
   }
 
-  console.log("Filtered Temples:", temples.length);
+  
   return (
     <div className="max-w-7xl mx-auto px-5 mb-5">
 

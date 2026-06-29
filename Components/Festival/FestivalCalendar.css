@@ -1,0 +1,89 @@
+.festival-calendar-wrapper{
+    background:#fff;
+    padding:25px;
+    /* border-radius:20px;
+    border:1px solid #6d4d22; */
+}
+
+.fc{
+    color:#fff;
+}
+
+.fc-toolbar-title{
+    color:#D4AF37;
+    font-size:28px !important;
+    font-weight:700;
+}
+
+.fc-button{
+    background:#D4AF37 !important;
+    color:#000 !important;
+    border:none !important;
+    border-radius:8px !important;
+    padding:8px 14px !important;
+}
+
+.fc-button:hover{
+    background:#f0c955 !important;
+}
+
+.fc-daygrid-day-number{
+   color: #292929;
+    text-decoration: none !important;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.fc-col-header-cell{
+    background:#fff;
+}
+
+.fc-col-header-cell-cushion{
+    color:#292929;
+    padding:10px 0;
+    text-decoration:none !important;
+}
+
+.fc-daygrid-day{
+    background:#fff;
+}
+
+/* Add gold border around today's date */
+.fc-day-today {
+    border: 2px solid #D4AF37 !important;
+}
+
+/* Make the date number gold */
+.fc-day-today .fc-daygrid-day-number {
+    color: #D4AF37 !important;
+    font-weight: 700;
+}
+.fc .fc-daygrid-day.fc-day-today {
+    background: transparent !important;
+}
+
+.fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-frame {
+    border: 2px solid #D4AF37 !important;
+    border-radius: 8px;
+}
+
+.fc-event{
+    background:#ebf9e0 !important;
+    color:#000 !important;
+    border:none !important;
+    padding:4px;
+    border-radius:6px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.fc-scrollgrid{
+    border:1px solid #f1f0ee !important;
+}
+
+.fc-theme-standard td,
+.fc-theme-standard th{
+    border-color:#f1f0ee !important;
+}
+.fc .fc-button-group{gap: 5px;}
+.fc .fc-button-group > .fc-button{border-radius: 0px !important;}

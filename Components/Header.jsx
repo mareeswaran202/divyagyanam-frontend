@@ -22,7 +22,7 @@ export default function Header({logoimg}) {
             <Link href="/temple-collection" className="text-white">
              Temples
             </Link>
-            <Link href="/coming-soon" className="text-white">
+            <Link href="/festivals" className="text-white">
               Festivals
             </Link>
             <Link href="/coming-soon" className="text-white">

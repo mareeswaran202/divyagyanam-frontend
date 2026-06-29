@@ -33,3 +33,7 @@
 }
  .topheadersupporttext svg{color: #d4af37;}
  .sitelogo{width:90px;}
+
+ @media only screen and (max-width:600px){
+  .topheadersupporttext{display: none;}
+ }

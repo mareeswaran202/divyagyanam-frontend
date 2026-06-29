@@ -81,7 +81,7 @@ const [searchResults, setSearchResults] = useState([]);
     setDeities(uniqueDeities);
 
   } catch (error) {
-    console.log("Temple API Error:", error);
+    
   }
 };
      
