@@ -49,40 +49,55 @@ export default function UpcomingFestivals({
 
       <div className="space-y-4">
 
-        {monthEvents.length === 0 ? (
+  {monthEvents.length === 0 ? (
 
-          <p className="text-gray-500">
-            No festivals this month.
-          </p>
+    <p className="text-gray-500">
+      No festivals this month.
+    </p>
 
-        ) : (
+  ) : (
 
-          monthEvents.map((festival) => (
+    monthEvents.slice(0, 2).map((festival) => (
 
-            <div
-              key={festival.id}
-              className="flex justify-between items-center border-b pb-3"
-            >
-              <div className="flex items-center gap-3">
-                <Star size={12} color="#396098" strokeWidth={4} />
+      <Link
+        key={festival.id}
+        href={`/festivals/${festival.Slug}`}
+        className="block"
+      >
 
-                <div>
-                  <h4 className="font-semibold">
-                    {festival.EventName}
-                  </h4>
+        <div className="flex justify-between items-center border-b pb-3 hover:bg-white/50 rounded-lg px-2 py-2 transition-all duration-300">
 
-                  <p className="text-sm text-gray-500">
-                    {formatDate(festival.EventDate)}
-                  </p>
-                </div>
-              </div>
+          <div className="flex items-center gap-3">
+
+            <Star
+              size={12}
+              color="#396098"
+              strokeWidth={4}
+            />
+
+            <div>
+
+              <h4 className="font-semibold hover:text-primary-gold transition">
+                {festival.EventName}
+              </h4>
+
+              <p className="text-sm text-gray-500">
+                {formatDate(festival.EventDate)}
+              </p>
+
             </div>
 
-          ))
+          </div>
 
-        )}
+        </div>
 
-      </div>
+      </Link>
+
+    ))
+
+  )}
+
+</div>
       <Link
   href="/festivals/list"
   className="text-sm text-primary-gold font-semibold hover:underline mt-3" style={{display:'block'}}
