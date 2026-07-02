@@ -104,7 +104,7 @@ const [searchResults, setSearchResults] = useState([]);
   router.push(`/temple-search?${params.toString()}`);
 };
     return (
-        <section className="bg-primary-brown py-6">
+        <section className="bg-primary-brown py-6 hidden md:block">
             <div className="container mx-auto px-5">
                 <div className="bg-[#1a0f07]/90 border border-[#6b4a1b] rounded-xl p-4">
                     <form className="grid grid-cols-1 md:grid-cols-5 gap-3">

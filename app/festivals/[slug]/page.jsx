@@ -6,7 +6,7 @@ export default async function FestivalDetails({ params }) {
   const { slug } = await params;
 
   const response = await fetchAPI(
-    `/temple-events?filters[Slug][$eq]=${slug}&populate=*`
+    `/temple-events?filters[Slug][$eq]=${slug}&populate[temples][populate]=*`
   );
 
   const festival = response.data[0];
@@ -16,84 +16,204 @@ export default async function FestivalDetails({ params }) {
   }
 
   return (
-  <section className="py-16 bg-gray-50">
-    <div className="container mx-auto px-5">
+<section className="bg-primary-brown py-16">
 
-      {/* Festival Header */}
-      <div className="bg-white rounded-2xl shadow-md p-10 mb-8">
+  <div className="max-w-7xl mx-auto px-5">
 
-        <span className="inline-block px-4 py-2 rounded-full bg-yellow-100 text-yellow-700 font-semibold mb-4">
+    {/* ================= Hero ================= */}
+
+    <div className="relative rounded-3xl overflow-hidden h-[450px] shadow-2xl">
+
+      <img
+        src={
+          festival.Banner?.url
+            ? process.env.NEXT_PUBLIC_STRAPI_URL + festival.Banner.url
+            : festival.temples?.[0]?.TempleImage?.url
+            ? process.env.NEXT_PUBLIC_STRAPI_URL +
+              festival.temples[0].TempleImage.url
+            : "/images/default-festival.jpg"
+        }
+        className="w-full h-full object-cover"
+        alt={festival.EventName}
+      />
+
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+
+      <div className="absolute bottom-10 left-10 text-white">
+
+        <span className="bg-primary-gold text-black px-4 py-2 rounded-full font-semibold">
           {festival.EventType}
         </span>
 
-        <h1 className="text-5xl font-bold mb-4">
+        <h1 className="text-6xl font-bold mt-5">
           {festival.EventName}
         </h1>
 
-        <p className="text-gray-500">
-          Festival Date :
-          <span className="font-semibold ml-2">
-            {festival.EventDate}
-          </span>
+        <p className="text-xl mt-4 text-gray-200">
+          📅 {new Date(festival.EventDate).toLocaleDateString("en-IN",{
+            day:"numeric",
+            month:"long",
+            year:"numeric"
+          })}
         </p>
 
       </div>
 
-      {/* Description */}
-      <div className="bg-white rounded-2xl shadow-md p-10 mb-8">
+    </div>
 
-        <h2 className="text-3xl font-bold mb-6">
-          About the Festival
-        </h2>
+    {/* ================= Info Strip ================= */}
 
-        {festival.Description?.map((block, index) => (
-          <p
-            key={index}
-            className="text-gray-700 leading-8 mb-5"
-          >
-            {block.children?.map(child => child.text)}
+    <div className="bg-[#181208] rounded-3xl border border-[#4b3817] mt-10 overflow-hidden">
+
+      <div className="grid grid-cols-2 lg:grid-cols-4">
+
+        <div className="p-8 text-center border-r border-[#4b3817]">
+          <p className="text-gray-400 uppercase text-sm">
+            Festival Date
           </p>
-        ))}
 
-      </div>
+          <h3 className="text-white text-2xl font-bold mt-2">
+            {new Date(festival.EventDate).toLocaleDateString("en-IN")}
+          </h3>
+        </div>
 
-      {/* Related Temples */}
-      <div className="bg-white rounded-2xl shadow-md p-10">
+        <div className="p-8 text-center border-r border-[#4b3817]">
 
-        <h2 className="text-3xl font-bold mb-6">
-          Associated Temples
-        </h2>
+          <p className="text-gray-400 uppercase text-sm">
+            Festival Type
+          </p>
 
-        <div className="grid md:grid-cols-2 gap-6">
+          <h3 className="text-primary-gold text-2xl font-bold mt-2">
+            {festival.EventType}
+          </h3>
 
-          {festival.Temple?.map((temple) => (
+        </div>
 
-            <div
-              key={temple.id}
-              className="border rounded-xl p-6 hover:shadow-lg transition"
-            >
-              <h3 className="text-2xl font-semibold mb-2">
-                {temple.TempleName}
-              </h3>
+        <div className="p-8 text-center border-r border-[#4b3817]">
 
-              <p className="text-gray-600 mb-2">
-                {temple.Location}, {temple.State}
-              </p>
+          <p className="text-gray-400 uppercase text-sm">
+            Temples
+          </p>
 
-              <p className="text-gray-700">
-                {temple.ShortDescription}
-              </p>
+          <h3 className="text-white text-2xl font-bold mt-2">
+            {festival.temples?.length || 0}
+          </h3>
 
-            </div>
+        </div>
 
-          ))}
+        <div className="p-8 text-center">
+
+          <p className="text-gray-400 uppercase text-sm">
+            Recurring
+          </p>
+
+          <h3 className="text-white text-2xl font-bold mt-2">
+            {festival.IsRecurring ? "Yes" : "No"}
+          </h3>
 
         </div>
 
       </div>
 
     </div>
-  </section>
+
+    {/* ================= About ================= */}
+
+    <div className="bg-[#1A160E] rounded-3xl p-10 shadow-xl mt-12">
+
+      <h2 className="text-4xl font-bold mb-8 text-primary-gold">
+        About the Festival
+      </h2>
+
+      <div className="space-y-6 text-lg leading-9 text-[#B3AB7C]">
+
+        {festival.Description?.map((block,index)=>(
+
+          <p key={index}>
+            {block.children?.map(child=>child.text)}
+          </p>
+
+        ))}
+
+      </div>
+
+    </div>
+
+    {/* ================= Associated Temples ================= */}
+
+    <div className="mt-14">
+
+      <h2 className="text-4xl text-white font-bold mb-8">
+        Associated Temples
+      </h2>
+
+      {festival.temples?.length > 0 ? (
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          {festival.temples.map((temple)=>{
+
+            const image =
+              temple.TempleImage?.url
+                ? process.env.NEXT_PUBLIC_STRAPI_URL +
+                  temple.TempleImage.url
+                : "/images/default-temple.jpg";
+
+            return(
+
+              <a
+                key={temple.id}
+                href={`/temple/${temple.Slug}`}
+                className="group bg-white rounded-3xl overflow-hidden shadow-xl hover:-translate-y-2 transition duration-300"
+              >
+
+                <img
+                  src={image}
+                  className="w-full h-60 object-cover group-hover:scale-105 transition duration-500"
+                  alt={temple.TempleName}
+                />
+
+                <div className="p-6 bg-[#1A160E]">
+
+                  <h3 className="text-2xl font-bold mb-3 text-white">
+                    {temple.TempleName}
+                  </h3>
+
+                  <p className="text-primary-gold  mb-3">
+                     {temple.Location}, {temple.State}
+                  </p>
+
+                  <p className="text-[#B3AB7C]  line-clamp-3">
+                    {temple.ShortDescription}
+                  </p>
+
+                  <span className="inline-block mt-6 text-primary-gold font-semibold">
+                    View Temple →
+                  </span>
+
+                </div>
+
+              </a>
+
+            )
+
+          })}
+
+        </div>
+
+      ) : (
+
+        <div className="bg-white rounded-2xl p-10">
+          No associated temples found.
+        </div>
+
+      )}
+
+    </div>
+
+  </div>
+
+</section>
 );
 
 }

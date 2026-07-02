@@ -5,7 +5,7 @@ export default async function TopHeader(){
    const topheaderdata = res.data
    if(!topheaderdata) return null
     return(
-   <div className="bg-primary-brown border-b border-primary-gold text-sm text-white">
+   <div className="bg-primary-brown border-b border-primary-gold text-sm text-white hidden md:block">
   <div className="container mx-auto px-4 py-3 relative flex items-center">
 
     {/* Center Text - Desktop Only */}

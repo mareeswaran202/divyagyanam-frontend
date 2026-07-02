@@ -8,7 +8,8 @@ import "swiper/css/pagination";
 
 export default function Slider({ slides }) {
   return (
-    <Swiper
+    <section className="hidden md:block">
+ <Swiper
       modules={[Autoplay, Pagination]}
       spaceBetween={0}
       slidesPerView={0}
@@ -107,5 +108,7 @@ export default function Slider({ slides }) {
         );
       })}
     </Swiper>
+    </section>
+   
   );
 }

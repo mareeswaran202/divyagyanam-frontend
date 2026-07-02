@@ -4,7 +4,7 @@ export default async function ServiceCard(){
     const servicecard = await fetchAPI('/quick-access-card?populate[HomeCard][populate]=*')
     const cardres = servicecard.data.HomeCard
     return(
-       <section className="bg-primary-brown container mx-auto">
+       <section className="bg-primary-brown container mx-auto servicecard">
         <div className="max-w-full mx-auto px-5">
            <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-9 gap-3 border border-b-gray-50" style={{borderBottom:'none'}}>
 {

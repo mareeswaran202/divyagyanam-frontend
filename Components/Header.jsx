@@ -1,5 +1,5 @@
 "use client";
-
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -45,12 +45,16 @@ export default function Header({logoimg}) {
             </Link>
           </nav>
 
-          <button
-            className="md:hidden"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            ☰
-          </button>
+         <button
+  onClick={() => setMenuOpen(!menuOpen)}
+  className="md:hidden text-white mobilemenu"
+>
+  {menuOpen ? (
+    <X size={30} />
+  ) : (
+    <Menu size={30} />
+  )}
+</button>
         </div>
 
         {menuOpen && (
@@ -79,6 +83,12 @@ export default function Header({logoimg}) {
             </Link>
             <Link href="/coming-soon" className="text-white">
             More
+            </Link>
+             <Link href="/coming-soon" className="text-white">
+            Login
+            </Link>
+             <Link href="/coming-soon" className="text-white">
+           Become Member
             </Link>
             </div>
           </div>
