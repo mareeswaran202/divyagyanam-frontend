@@ -25,7 +25,7 @@ export default function Header({logoimg}) {
             <Link href="/festivals" className="text-white">
               Festivals
             </Link>
-            <Link href="/coming-soon" className="text-white">
+            <Link href="/pooja-schedule" className="text-white">
               Puja Schedule
             </Link>
             <Link href="/coming-soon" className="text-white">
@@ -66,7 +66,7 @@ export default function Header({logoimg}) {
             <Link href="/coming-soon" className="text-white">
               Festivals
             </Link>
-            <Link href="/coming-soon" className="text-white">
+            <Link href="/pooja-schedule" className="text-white">
               Puja Schedule
             </Link>
             <Link href="/coming-soon" className="text-white">
