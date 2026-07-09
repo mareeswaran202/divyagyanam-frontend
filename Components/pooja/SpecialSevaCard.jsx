@@ -35,7 +35,7 @@ export default function SpecialSevaCard({ seva }) {
         </p>
 
         <button className="mt-2 px-4 py-2 rounded-lg bg-purple-600 text-white text-sm">
-          Book Now
+         Know More
         </button>
 
       </div>
