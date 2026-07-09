@@ -8,7 +8,7 @@ export const metadata = {
 export default async function PoojaSchedulePage() {  
 
 const temples = await fetchAPI("/templecollections?populate=*");
-
+const festivals = await fetchAPI("/temple-events?populate=*")
 // const dailyPoojas = await fetchAPI("/daily-poojas?populate=*");
 
 // const specialSevas = await fetchAPI("/special-sevas?populate=*");
@@ -27,7 +27,7 @@ const sevaSchedules = await fetchAPI(
   return (
    <>
     
-    <PoojaScheduleClient temples={temples.data} poojas={dailySchedules.data} sevas={sevaSchedules.data}/>
+    <PoojaScheduleClient temples={temples.data} poojas={dailySchedules.data} sevas={sevaSchedules.data} festival = {festivals.data}/>
   
    </>
   );

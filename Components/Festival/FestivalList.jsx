@@ -21,7 +21,7 @@ export default function FestivalList({
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                     {festivals.map((festival)=>(
-
+                        
                         <FestivalCard
                             key={festival.id}
                             festival={festival}

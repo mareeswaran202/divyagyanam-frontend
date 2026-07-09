@@ -5,13 +5,14 @@ import {
   Phone,
   BadgeCheck,
 } from "lucide-react";
+import Image from "next/image";
 
  
 
 export default function TempleHeaderCard({ temple }) {
     const image = process.env.NEXT_PUBLIC_STRAPI_URL + temple.TempleImage.url
   
-
+   console.log(`Image url ${image}`)
   return (
     <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 mb-6">
 
@@ -23,13 +24,11 @@ export default function TempleHeaderCard({ temple }) {
 
           <div className="relative w-32 h-32 rounded-xl overflow-hidden">
             
-            <img
-              src={image}
-              alt={temple.TempleName}
-              fill
-              className="object-cover"
-            />
-
+           <img
+  src={image}
+  alt={temple.TempleName}
+  className="w-full h-full object-cover"
+/>
           </div>
 
           <div>
