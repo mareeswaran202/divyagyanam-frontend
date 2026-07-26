@@ -11,7 +11,7 @@ export default function FestivalSidebar({ festivals }) {
 
       <div className="space-y-5">
 
-        {festivals.map((festival) => (
+        {festivals.slice(0,3).map((festival) => (
           <Link
             key={festival.id}
             href={`/festival/${festival.Slug}`}

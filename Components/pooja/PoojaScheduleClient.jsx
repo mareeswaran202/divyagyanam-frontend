@@ -44,6 +44,23 @@ export default function PoojaScheduleClient({
       (temple) => temple.id === selectedTemple.id
     )
   );
+
+
+console.log("Selected Temple:", selectedTemple);
+console.log("Selected Temple ID:", selectedTemple?.id);
+
+console.log("All Pooja Schedules:", poojas);
+
+console.log(
+  "Samayapuram schedules:",
+  poojas.filter(
+    (item) => item.temple?.id === selectedTemple?.id
+  )
+);
+
+console.log("Selected Date:", selectedDate);
+
+
   const filteredPoojas = poojas
     .filter((item) => item.temple?.id === selectedTemple.id)
     .filter(

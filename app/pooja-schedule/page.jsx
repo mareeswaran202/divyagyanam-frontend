@@ -8,12 +8,12 @@ export const metadata = {
 export default async function PoojaSchedulePage() {  
 
 const temples = await fetchAPI("/templecollections?populate=*");
-const festivals = await fetchAPI("/temple-events?populate=*")
+const festivals = await fetchAPI("/temple-events?populate=*&pagination[pageSize]=100")
 // const dailyPoojas = await fetchAPI("/daily-poojas?populate=*");
 
 // const specialSevas = await fetchAPI("/special-sevas?populate=*");
 const dailySchedules = await fetchAPI(
-  "/daily-pooja-schedules?populate=*"
+  "/daily-pooja-schedules?populate=*&pagination[pageSize]=100"
 );
 
 const sevaSchedules = await fetchAPI(

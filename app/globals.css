@@ -41,3 +41,52 @@
   .topheadersupporttext{display: none;}
   .servicecard{padding-top: 30px !important;}
  }
+
+ /* History scrollbar */
+.history-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #6b5518 #181208;
+}
+
+/* Chrome, Edge, Safari */
+.history-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.history-scroll::-webkit-scrollbar-track {
+  background: #181208;
+  border-radius: 10px;
+}
+
+.history-scroll::-webkit-scrollbar-thumb {
+  background: #6b5518;
+  border-radius: 10px;
+}
+
+.history-scroll::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
+
+.history-horizontal-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #D4AF37 #171006;
+}
+
+.history-horizontal-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.history-horizontal-scroll::-webkit-scrollbar-track {
+  background: #171006;
+  border-radius: 10px;
+}
+
+.history-horizontal-scroll::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 10px;
+}
+
+.history-horizontal-scroll::-webkit-scrollbar-thumb:hover {
+  background: #e5c24a;
+}
