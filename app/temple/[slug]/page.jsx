@@ -328,7 +328,9 @@ console.log("========================");
           prose-strong:text-white
           prose-ul:my-4
           prose-li:my-2">
-            <BlocksRenderer content={siteSetting.DefaultDosAndDonts} />
+            {siteSetting?.DefaultDosAndDonts?.length > 0 && (
+  <BlocksRenderer content={siteSetting.DefaultDosAndDonts} />
+)}
           </div>
 
         </div>
