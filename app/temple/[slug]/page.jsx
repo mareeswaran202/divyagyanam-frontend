@@ -29,6 +29,12 @@ export default async function TempleDetails({ params }) {
   );
 
   const festivals = festivalData.data;
+  console.log("===== TEMPLE DEBUG =====");
+console.log("Temple:", temple?.TempleName);
+console.log("Gallery:", temple?.Gallery);
+console.log("History:", temple?.History);
+console.log("Festivals:", festivals);
+console.log("========================");
  
 
   return (
