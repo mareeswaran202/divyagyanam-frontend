@@ -313,7 +313,9 @@ console.log("========================");
           prose-strong:text-white
           prose-ul:my-4
           prose-li:my-2">
-            <BlocksRenderer content={siteSetting.DefaultDressCode} />
+            {siteSetting?.DefaultDressCode?.length > 0 && (
+  <BlocksRenderer content={siteSetting.DefaultDressCode} />
+)}
             {temple.AdditionalDressCode?.length > 0 && <BlocksRenderer content={temple.AdditionalDressCode} />}
           </div>
 

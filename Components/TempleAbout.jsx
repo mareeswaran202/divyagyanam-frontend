@@ -105,9 +105,9 @@ export default function TempleAbout({ temple }) {
               [&_h3]:mb-4
             "
           >
-            {temple?.DescriptionRich && (
-              <BlocksRenderer content={temple.DescriptionRich} />
-            )}
+            {temple?.DescriptionRich?.length > 0 && (
+  <BlocksRenderer content={temple.DescriptionRich} />
+)}
           </div>
 
           {/* Clear float */}
