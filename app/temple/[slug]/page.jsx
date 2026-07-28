@@ -7,6 +7,7 @@ import Link from "next/link";
 import TempleFestival from "@/Components/TempleFestival";
 import HistoryTimeline from "@/Components/HistoryTimeline";
 import TempleAbout from "@/Components/TempleAbout";
+import TempleMap from "@/Components/TempleMap";
 export default async function TempleDetails({ params }) {
   const { slug } = await params;
 
@@ -28,14 +29,7 @@ export default async function TempleDetails({ params }) {
     `/temple-events?filters[temples][Slug][$eq]=${slug}&populate=*`
   );
 
-  const festivals = festivalData.data;
-  console.log("===== TEMPLE DEBUG =====");
-console.log("Temple:", temple?.TempleName);
-console.log("Gallery:", temple?.Gallery);
-console.log("History:", temple?.History);
-console.log("Festivals:", festivals);
-console.log("========================");
- 
+  const festivals = festivalData.data; 
 
   return (
 
@@ -611,7 +605,7 @@ console.log("========================");
         </section>
       )}
 
-
+      <TempleMap temple={temple}/>
 
     </section>
 

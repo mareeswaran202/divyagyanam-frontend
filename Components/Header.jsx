@@ -28,6 +28,9 @@ export default function Header({logoimg}) {
             <Link href="/pooja-schedule" className="text-white">
               Puja Schedule
             </Link>
+            <Link href="/daily-calendar" className="text-white">
+            Daily Calendar
+            </Link>
             <Link href="/live-darshan" className="text-white">
               Live Darshan
             </Link>
@@ -68,6 +71,9 @@ export default function Header({logoimg}) {
             </Link>
             <Link href="/pooja-schedule" className="text-white">
               Puja Schedule
+            </Link>
+             <Link href="/daily-calendar" className="text-white">
+            Daily Calendar
             </Link>
             <Link href="/live-darshan" className="text-white">
               Live Darshan
