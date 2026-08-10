@@ -434,7 +434,9 @@ export default async function TempleDetails({ params }) {
                     </h3>
 
                     <div className="text-gray-300 leading-7">
-                      <p>{temple.TempleTiming}</p>
+                      {/* <p>{temple.TempleTiming}</p> */}
+                      <p>Morning: {temple.TempleOpeningHours?.MorningOpens}</p>
+                      <p>Afternoon: {temple.TempleOpeningHours?.AfternoonOpens}</p>
                       {/* <BlocksRenderer content={temple.TempleTiming} /> */}
                     </div>
 
