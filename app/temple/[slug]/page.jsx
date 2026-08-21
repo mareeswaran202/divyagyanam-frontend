@@ -8,6 +8,7 @@ import TempleFestival from "@/Components/TempleFestival";
 import HistoryTimeline from "@/Components/HistoryTimeline";
 import TempleAbout from "@/Components/TempleAbout";
 import TempleMap from "@/Components/TempleMap";
+import DailyPoojaTimings from "@/Components/pooja/DailyPoojaTimings";
 export default async function TempleDetails({ params }) {
   const { slug } = await params;
 
@@ -31,6 +32,13 @@ export default async function TempleDetails({ params }) {
 
   const festivals = festivalData.data; 
 
+const dailyPoojas = await fetchAPI(
+  `/daily-pooja-schedules?filters[temple][documentId][$eq]=${temple.documentId}&populate=*`
+);
+
+const poojas = dailyPoojas.data || [];
+
+console.log("DAILY POOJA DATA:", poojas);
   return (
 
 
@@ -506,6 +514,7 @@ export default async function TempleDetails({ params }) {
             </div>
           </section>
         )}
+        <DailyPoojaTimings poojasdata={poojas} />
       {temple.LiveStreamingUrl && (
         <section className="py-16">
           <div className="max-w-6xl mx-auto px-5">
