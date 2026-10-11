@@ -1,4 +1,4 @@
-import { fetchAPI } from "@/lib/api";
+﻿import { fetchAPI } from "@/lib/api";
 import { notFound } from "next/navigation";
 import TempleGallery from "@/Components/TempleGallery";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }) {
       temple.ShortDescription ||
       `Discover the history, pooja timings, darshan details and information about ${name} on DivyaGyanam.`;
 
-   const image = getAbsoluteImageUrl(temple.Gallery);
+   const image = getAbsoluteImageUrl(temple.TempleImage);
 
 const socialImage = image?.replace(
   /^http:\/\/localhost:1337/,
