@@ -12,6 +12,7 @@ import DailyPoojaTimings from "@/Components/pooja/DailyPoojaTimings";
 import TempleShare from "@/Components/TempleShare";
 const SITE_URL = "https://divyagyanam.com";
 const STRAPI_URL =
+  process.env.NEXT_PUBLIC_STRAPI_URL || "https://cms.divyagyanam.com";
 
 function getAbsoluteImageUrl(image) {
   if (!image) return undefined;
