@@ -2,16 +2,22 @@ import { fetchAPI } from "@/lib/api";
 
 export default async function LiveDarshanSection() {
   const data = await fetchAPI(
-    "/live-darshans?populate=*"
+    "/live-darshans?populate=*",
+    {
+      cache: "no-store",
+    }
   );
+
+
 
   const live = data.data[0];
 
   if (!live) return null;
-const embedUrl = live.LiveVideoUrl.replace(
-  "watch?v=",
-  "embed/"
-);
+
+  const embedUrl = live.LiveVideoUrl.replace(
+    "watch?v=",
+    "embed/"
+  );
   return (
     <section className="py-20 bg-black text-white">
       <div className="max-w-7xl mx-auto px-5">
