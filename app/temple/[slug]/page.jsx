@@ -9,6 +9,95 @@ import HistoryTimeline from "@/Components/HistoryTimeline";
 import TempleAbout from "@/Components/TempleAbout";
 import TempleMap from "@/Components/TempleMap";
 import DailyPoojaTimings from "@/Components/pooja/DailyPoojaTimings";
+import TempleShare from "@/Components/TempleShare";
+const SITE_URL = "https://divyagyanam.com";
+const STRAPI_URL =
+
+function getAbsoluteImageUrl(image) {
+  if (!image) return undefined;
+
+  const media = Array.isArray(image) ? image[0] : image;
+
+  const url =
+    media?.formats?.large?.url ||
+    media?.formats?.medium?.url ||
+    media?.url ||
+    media?.data?.[0]?.attributes?.url ||
+    media?.data?.attributes?.url ||
+    media?.attributes?.url;
+
+  if (!url) return undefined;
+
+  if (url.startsWith("http://") || url.startsWith("https://")) {
+    return url;
+  }
+
+  return `${STRAPI_URL.replace(/\/$/, "")}/${url.replace(/^\//, "")}`;
+}
+
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+
+  try {
+    const response = await fetchAPI(
+      `/templecollections?filters[Slug][$eq]=${encodeURIComponent(slug)}&populate=*`
+    );
+
+    const temple = response?.data?.[0];
+
+    if (!temple) {
+      return {
+        title: "Temple Not Found | DivyaGyanam",
+        robots: { index: false, follow: false },
+      };
+    }
+
+    const name = temple.TempleName || "Temple";
+    const description =
+      temple.ShortDescription ||
+      `Discover the history, pooja timings, darshan details and information about ${name} on DivyaGyanam.`;
+
+   const image = getAbsoluteImageUrl(temple.Gallery);
+
+const socialImage = image?.replace(
+  /^http:\/\/localhost:1337/,
+  "https://cms.divyagyanam.com"
+);
+    const pageUrl = `${SITE_URL}/temple/${encodeURIComponent(slug)}`;
+
+    return {
+      title: `${name} | DivyaGyanam`,
+      description,
+      alternates: {
+        canonical: pageUrl,
+      },
+      openGraph: {
+        type: "article",
+        url: pageUrl,
+        siteName: "DivyaGyanam",
+        title: `${name} | DivyaGyanam`,
+        description,
+        ...(socialImage ? { images: [{ url: socialImage, alt: name }] } : {}),
+      },
+      twitter: {
+        card: socialImage ? "summary_large_image" : "summary",
+        title: `${name} | DivyaGyanam`,
+        description,
+        ...(socialImage ? { images: [socialImage] } : {}),
+      },
+    };
+  } catch (error) {
+    console.error("Temple metadata error:", error);
+
+    return {
+      title: "Temple Details | DivyaGyanam",
+      description: "Explore temple history, pooja timings and darshan details.",
+    };
+  }
+}
+
+
 export default async function TempleDetails({ params }) {
   const { slug } = await params;
 
@@ -76,7 +165,7 @@ console.log("DAILY POOJA DATA:", poojas);
           {/* Ornament */}
           <div className="flex items-center justify-center gap-4 mb-8">
             <span className="w-16 h-px bg-gradient-to-r from-transparent to-[#D4AF37]/60" />
-            <span className="text-[#D4AF37] text-xl">✦</span>
+            <span className="text-[#D4AF37] text-xl">âœ¦</span>
             <span className="w-16 h-px bg-gradient-to-l from-transparent to-[#D4AF37]/60" />
           </div>
 
@@ -88,7 +177,7 @@ console.log("DAILY POOJA DATA:", poojas);
       text-xs md:text-sm
       mb-7
     ">
-            Divya Kshetra · {temple.Location} · {temple.State}
+            Divya Kshetra Â· {temple.Location} Â· {temple.State}
           </p>
 
           {/* Temple name */}
@@ -122,7 +211,11 @@ console.log("DAILY POOJA DATA:", poojas);
             {temple.ShortDescription}
           </p>
 
-          {/* Buttons */}
+           <TempleShare
+  templeName={temple.TempleName}
+  description={temple.ShortDescription}
+  slug={temple.Slug}
+/>
 
 
         </div>
