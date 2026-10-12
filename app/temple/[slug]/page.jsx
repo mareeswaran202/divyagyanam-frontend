@@ -14,26 +14,36 @@ const SITE_URL = "https://divyagyanam.com";
 const STRAPI_URL =
   process.env.NEXT_PUBLIC_STRAPI_URL || "https://cms.divyagyanam.com";
 
-function getAbsoluteImageUrl(image) {
-  if (!image) return undefined;
-
-  const media = Array.isArray(image) ? image[0] : image;
-
-  const url =
-    media?.formats?.large?.url ||
-    media?.formats?.medium?.url ||
-    media?.url ||
-    media?.data?.[0]?.attributes?.url ||
-    media?.data?.attributes?.url ||
-    media?.attributes?.url;
-
+ function toAbsolute(url) {
   if (!url) return undefined;
-
-  if (url.startsWith("http://") || url.startsWith("https://")) {
-    return url;
-  }
-
+  if (url.startsWith("http://") || url.startsWith("https://")) return url;
   return `${STRAPI_URL.replace(/\/$/, "")}/${url.replace(/^\//, "")}`;
+}
+
+function getSocialImage(image) {
+  const media = Array.isArray(image) ? image[0] : image;
+  if (!media) return undefined;
+
+  const MAX_KB = 250; // keep safely under WhatsApp's ~300 KB limit
+
+  const candidates = [media, ...Object.values(media.formats || {})]
+    .filter((f) => f?.url && f.size && f.size <= MAX_KB)
+    .sort((a, b) => (b.width || 0) - (a.width || 0)); // biggest that fits
+
+  const pick =
+    candidates[0] ||
+    media.formats?.small ||
+    media.formats?.thumbnail ||
+    media;
+
+  return {
+    url: toAbsolute(pick.url)?.replace(
+      /^http:\/\/localhost:1337/,
+      "https://cms.divyagyanam.com"
+    ),
+    width: pick.width,
+    height: pick.height,
+  };
 }
 
 
@@ -59,12 +69,10 @@ export async function generateMetadata({ params }) {
       temple.ShortDescription ||
       `Discover the history, pooja timings, darshan details and information about ${name} on DivyaGyanam.`;
 
-   const image = getAbsoluteImageUrl(temple.TempleImage);
+   const img = getSocialImage(temple.TempleImage);
+const socialImage = img?.url;
 
-const socialImage = image?.replace(
-  /^http:\/\/localhost:1337/,
-  "https://cms.divyagyanam.com"
-);
+ 
     const pageUrl = `${SITE_URL}/temple/${encodeURIComponent(slug)}`;
 
     return {
@@ -73,14 +81,16 @@ const socialImage = image?.replace(
       alternates: {
         canonical: pageUrl,
       },
-      openGraph: {
-        type: "article",
-        url: pageUrl,
-        siteName: "DivyaGyanam",
-        title: `${name} | DivyaGyanam`,
-        description,
-        ...(socialImage ? { images: [{ url: socialImage, alt: name }] } : {}),
-      },
+     openGraph: {
+  type: "article",
+  url: pageUrl,
+  siteName: "DivyaGyanam",
+  title: `${name} | DivyaGyanam`,
+  description,
+  ...(socialImage
+    ? { images: [{ url: socialImage, width: img.width, height: img.height, alt: name }] }
+    : {}),
+},
       twitter: {
         card: socialImage ? "summary_large_image" : "summary",
         title: `${name} | DivyaGyanam`,
@@ -128,7 +138,7 @@ const dailyPoojas = await fetchAPI(
 
 const poojas = dailyPoojas.data || [];
 
-console.log("DAILY POOJA DATA:", poojas);
+ 
   return (
 
 
@@ -166,7 +176,7 @@ console.log("DAILY POOJA DATA:", poojas);
           {/* Ornament */}
           <div className="flex items-center justify-center gap-4 mb-8">
             <span className="w-16 h-px bg-gradient-to-r from-transparent to-[#D4AF37]/60" />
-            <span className="text-[#D4AF37] text-xl">âœ¦</span>
+            <span className="text-[#D4AF37] text-xl">✦·</span>
             <span className="w-16 h-px bg-gradient-to-l from-transparent to-[#D4AF37]/60" />
           </div>
 
@@ -596,7 +606,7 @@ console.log("DAILY POOJA DATA:", poojas);
                       </h3>
 
                       <div className="text-gray-300 leading-7">
-                        <Link href="{temple.TempleWebsite}" className="hover:text-[#D4AF37] transition"> Visit Official Website</Link>
+                        <Link href={temple.TempleWebsite} className="hover:text-[#D4AF37] transition"> Visit Official Website</Link>
 
                       </div>
 
