@@ -4,6 +4,7 @@ import TempleNewsGallery from "@/Components/TempleNewsGallery";
 import TempleNewsShare from "@/Components/TempleNewsShare";
 import { notFound } from "next/navigation";
 import { fetchAPI } from "@/lib/api";
+export const dynamic = "force-dynamic";
 
 
 
