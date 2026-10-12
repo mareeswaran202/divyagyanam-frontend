@@ -1,5 +1,8 @@
 import { fetchAPI } from "@/lib/api"
 import TempleCard from "@/Components/TempleCard"
+export const metadata = {
+  title: "Temple Collection | DivyaGyanam",
+};
 export default async function TempleSection(){
     const data = await fetchAPI("/templecollections?populate=*&sort=createdAt:desc&pagination[pageSize]=100")
     const temples = data.data

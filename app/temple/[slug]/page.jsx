@@ -14,7 +14,7 @@ const SITE_URL = "https://divyagyanam.com";
 const STRAPI_URL =
   process.env.NEXT_PUBLIC_STRAPI_URL || "https://cms.divyagyanam.com";
 
- function toAbsolute(url) {
+function toAbsolute(url) {
   if (!url) return undefined;
   if (url.startsWith("http://") || url.startsWith("https://")) return url;
   return `${STRAPI_URL.replace(/\/$/, "")}/${url.replace(/^\//, "")}`;
@@ -69,10 +69,10 @@ export async function generateMetadata({ params }) {
       temple.ShortDescription ||
       `Discover the history, pooja timings, darshan details and information about ${name} on DivyaGyanam.`;
 
-   const img = getSocialImage(temple.TempleImage);
-const socialImage = img?.url;
+    const img = getSocialImage(temple.TempleImage);
+    const socialImage = img?.url;
 
- 
+
     const pageUrl = `${SITE_URL}/temple/${encodeURIComponent(slug)}`;
 
     return {
@@ -81,16 +81,16 @@ const socialImage = img?.url;
       alternates: {
         canonical: pageUrl,
       },
-     openGraph: {
-  type: "article",
-  url: pageUrl,
-  siteName: "DivyaGyanam",
-  title: `${name} | DivyaGyanam`,
-  description,
-  ...(socialImage
-    ? { images: [{ url: socialImage, width: img.width, height: img.height, alt: name }] }
-    : {}),
-},
+      openGraph: {
+        type: "article",
+        url: pageUrl,
+        siteName: "DivyaGyanam",
+        title: `${name} | DivyaGyanam`,
+        description,
+        ...(socialImage
+          ? { images: [{ url: socialImage, width: img.width, height: img.height, alt: name }] }
+          : {}),
+      },
       twitter: {
         card: socialImage ? "summary_large_image" : "summary",
         title: `${name} | DivyaGyanam`,
@@ -130,15 +130,15 @@ export default async function TempleDetails({ params }) {
     `/temple-events?filters[temples][Slug][$eq]=${slug}&populate=*`
   );
 
-  const festivals = festivalData.data; 
+  const festivals = festivalData.data;
 
-const dailyPoojas = await fetchAPI(
-  `/daily-pooja-schedules?filters[temple][documentId][$eq]=${temple.documentId}&populate=*`
-);
+  const dailyPoojas = await fetchAPI(
+    `/daily-pooja-schedules?filters[temple][documentId][$eq]=${temple.documentId}&populate=*`
+  );
 
-const poojas = dailyPoojas.data || [];
+  const poojas = dailyPoojas.data || [];
 
- 
+
   return (
 
 
@@ -222,31 +222,31 @@ const poojas = dailyPoojas.data || [];
             {temple.ShortDescription}
           </p>
 
-           <TempleShare
-  templeName={temple.TempleName}
-  description={temple.ShortDescription}
-  slug={temple.Slug}
-/>
+          <TempleShare
+            templeName={temple.TempleName}
+            description={temple.ShortDescription}
+            slug={temple.Slug}
+          />
 
 
         </div>
       </section>
 
 
-        <TempleAbout temple={temple}/>
-
-     
+      <TempleAbout temple={temple} />
 
 
-    
+
+
+
 
       {temple.History?.length > 0 && (
         <HistoryTimeline items={temple.History} />
       )}
 
- 
 
-      
+
+
       {temple.TempleArchitecture?.length > 0 && (
         <section>
           <div className="max-w-7xl m-auto px-5 py-10">
@@ -270,7 +270,7 @@ const poojas = dailyPoojas.data || [];
         </section>
       )}
 
- 
+
       {/* {
         temple.HistoryOrigin && temple.HistoryOrigin.length > 0 && (
           <section className="max-w-7xl mx-auto px-5 py-10">
@@ -420,8 +420,8 @@ const poojas = dailyPoojas.data || [];
           prose-ul:my-4
           prose-li:my-2">
             {siteSetting?.DefaultDressCode?.length > 0 && (
-  <BlocksRenderer content={siteSetting.DefaultDressCode} />
-)}
+              <BlocksRenderer content={siteSetting.DefaultDressCode} />
+            )}
             {temple.AdditionalDressCode?.length > 0 && <BlocksRenderer content={temple.AdditionalDressCode} />}
           </div>
 
@@ -437,8 +437,8 @@ const poojas = dailyPoojas.data || [];
           prose-ul:my-4
           prose-li:my-2">
             {siteSetting?.DefaultDosAndDonts?.length > 0 && (
-  <BlocksRenderer content={siteSetting.DefaultDosAndDonts} />
-)}
+              <BlocksRenderer content={siteSetting.DefaultDosAndDonts} />
+            )}
           </div>
 
         </div>
@@ -618,7 +618,7 @@ const poojas = dailyPoojas.data || [];
             </div>
           </section>
         )}
-        <DailyPoojaTimings poojasdata={poojas} />
+      <DailyPoojaTimings poojasdata={poojas} />
       {temple.LiveStreamingUrl && (
         <section className="py-16">
           <div className="max-w-6xl mx-auto px-5">
@@ -720,7 +720,7 @@ const poojas = dailyPoojas.data || [];
         </section>
       )}
 
-      <TempleMap temple={temple}/>
+      <TempleMap temple={temple} />
 
     </section>
 

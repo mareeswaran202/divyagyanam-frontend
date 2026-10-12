@@ -40,6 +40,9 @@ export default function Header({logoimg}) {
              <Link href="/coming-soon" className="text-white">
              Media
             </Link>
+             <Link href="/temple-news" className="text-white">
+             News
+            </Link>
             <Link href="/coming-soon" className="text-white">
             Plan Visit
             </Link>
@@ -83,6 +86,9 @@ export default function Header({logoimg}) {
             </Link>
              <Link href="/coming-soon" className="text-white">
              Media
+            </Link>
+             <Link href="/temple-news" className="text-white">
+             News
             </Link>
             <Link href="/coming-soon" className="text-white">
             Plan Visit
