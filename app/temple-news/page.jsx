@@ -4,6 +4,7 @@ import { fetchAPI } from "@/lib/api";
 export const dynamic = "force-dynamic";
 export const metadata = {
   title: "Temple Latest News | DivyaGyanam",
+  description: "Latest News about Temples in india",
 };
 const STRAPI_URL =
   process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";

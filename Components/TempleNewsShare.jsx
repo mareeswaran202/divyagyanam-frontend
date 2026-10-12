@@ -30,14 +30,14 @@ export default function TempleNewsShare({ title }) {
 
   return (
     <div className="mt-6 flex flex-wrap items-center gap-3">
-      <span className="mr-1 text-sm font-semibold text-gray-600">
+      <span className="mr-1 text-sm font-semibold text-white">
         Share this news:
       </span>
 
       <button
         type="button"
         onClick={() => share("whatsapp")}
-        className="inline-flex items-center gap-2 rounded-full border border-gray-200 px-4 py-2 text-sm font-semibold text-[#111111] transition hover:border-[#D4AF37] hover:bg-[#D4AF37]/10"
+        className="bg-[#25D366] inline-flex items-center gap-2 rounded-full border border-gray-200 px-4 py-2 text-sm font-semibold text-white transition hover:border-[#D4AF37] hover:bg-[#D4AF37]/10"
         aria-label="Share news on WhatsApp"
       >
         <WhatsAppIcon />
@@ -47,7 +47,7 @@ export default function TempleNewsShare({ title }) {
       <button
         type="button"
         onClick={() => share("facebook")}
-        className="inline-flex items-center gap-2 rounded-full border border-gray-200 px-4 py-2 text-sm font-semibold text-[#111111] transition hover:border-[#D4AF37] hover:bg-[#D4AF37]/10"
+        className="bg-[#1877F2] inline-flex items-center gap-2 rounded-full border border-gray-200 px-4 py-2 text-sm font-semibold text-white transition hover:border-[#D4AF37] hover:bg-[#D4AF37]/10"
         aria-label="Share news on Facebook"
       >
         <FacebookIcon />
