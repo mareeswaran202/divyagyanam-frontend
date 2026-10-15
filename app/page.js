@@ -7,6 +7,7 @@ import MediaSection from "@/Components/media";
 import Donate from "@/Components/Donate";
 import HomeStats from "@/Components/HomeStats";
 import TestimonialSection from "@/Components/TestimonialSection";
+import LatestNews from "@/Components/LatestNews";
  
 export default async function Home() {
   const data = await fetchAPI("/hero-sliders?populate=*");
@@ -16,6 +17,7 @@ export default async function Home() {
     <TempleSearch/>
     <ServiceCard/>    
     <LiveSection/>
+    <LatestNews/>
     <MediaSection/>
     <Donate/>
     <HomeStats/>
